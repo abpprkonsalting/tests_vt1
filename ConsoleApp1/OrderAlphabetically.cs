@@ -19,7 +19,7 @@ namespace testsVT
             }
             this.phrase = phrase;
         }
-        public string order()
+        public string sortAlphabetically()
         {
             this.ordered = phrase;
             return ordered;
