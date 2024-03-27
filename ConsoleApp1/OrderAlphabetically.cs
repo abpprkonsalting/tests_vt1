@@ -21,7 +21,7 @@ namespace testsVT
         }
         public string sortAlphabetically()
         {
-            this.ordered = phrase;
+            this.ordered = String.Concat(phrase.OrderBy(c => c));
             return ordered;
         }
     }
