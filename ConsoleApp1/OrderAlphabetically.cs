@@ -21,7 +21,14 @@ namespace testsVT
         }
         public string sortAlphabetically()
         {
-            this.ordered = String.Concat(phrase.OrderBy(c => c));
+            var words = phrase.Split(' ');
+            this.ordered = String.Concat(phrase.OrderBy(c => c)).Trim();
+            var index = -1;
+            foreach (var word in words)
+            {
+                index += word.Length + 1;
+                this.ordered = this.ordered.Insert(index, " ");
+            }
             return ordered;
         }
     }
