@@ -36,8 +36,13 @@ namespace testsVT
             }
             catch (Exception e)
             {
-                Console.Write("Exception:");
-                Console.Write(e.Message);
+                Console.Write("Exception: ");
+                Console.Write(e.Message + "\n");
+                
+            }
+            finally{
+                Console.Write("Oprima enter para terminar.\n");
+                Console.ReadLine();
             }
 
         }
