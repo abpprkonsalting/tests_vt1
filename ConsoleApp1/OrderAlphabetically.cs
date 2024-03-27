@@ -13,7 +13,7 @@ namespace testsVT
 
         public OrderAlphabetically(string phrase)
         {
-            if (!string.IsNullOrEmpty(phrase))
+            if (string.IsNullOrEmpty(phrase))
             {
                 throw new Exception("La frase no puede ser vacia");
             }
