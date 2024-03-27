@@ -26,6 +26,8 @@ namespace testsVT
                         Console.Write("Entre la frase a ordenar alfabeticamente:");
                         var phrase = Console.ReadLine();
                         var orderer = new OrderAlphabetically(phrase);
+                        Console.Write("La frase original es: " + phrase + "\n");
+                        Console.Write("La frase ordenada es: " + orderer.sortAlphabetically() + "\n");
                         break;
                     case "2":
                         break;
