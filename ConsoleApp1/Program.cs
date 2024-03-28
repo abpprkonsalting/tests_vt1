@@ -68,11 +68,12 @@ namespace testsVT
 
         static void inputSalaryCalculatorPropertyValue(SalaryCalculator calculator, string message, string propertyName)
         {
-            var pass = true;
+            bool pass;
             do
             {
                 try
                 {
+                    pass = true;
                     Console.Write(message);
                     var value = Console.ReadLine();
                     var type = calculator.GetType();
@@ -85,7 +86,7 @@ namespace testsVT
                 catch (Exception ex)
                 {
                     Console.Write("Exception: ");
-                    Console.Write(ex.Message + "\n");
+                    Console.Write(ex.InnerException.Message + "\n");
                     pass = false;
                 }
 
