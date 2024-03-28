@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,7 +32,14 @@ namespace testsVT
                         break;
                     case "2":
                         var salaryCalculator = new SalaryCalculator();
-                        inputSalaryCalculatorData(salaryCalculator);
+                        inputSalaryCalculatorPropertyValue(salaryCalculator,
+                                "Entre hora de inicio del trabajo (notación 24h): ", "StartTime");
+                        inputSalaryCalculatorPropertyValue(salaryCalculator,
+                                "Entre hora de salida del trabajo (notación 24h): ", "EndTime");
+                        inputSalaryCalculatorPropertyValue(salaryCalculator,
+                                "Entre tasa horaria del trabajo ($/h): ", "HourRate");
+                        inputSalaryCalculatorPropertyValue(salaryCalculator,
+                                "Entre factor para horas extras del trabajo (n): ", "ExtraHourFactor");
                         Console.Write("El salario total del día es: ");
                         Console.Write("$" + salaryCalculator.calculateSalary() + "\n");
                         Console.Write("Horas normales trabajadas: ");
@@ -57,63 +65,22 @@ namespace testsVT
 
         }
 
-        static void inputSalaryCalculatorData(SalaryCalculator calculator)
+
+        static void inputSalaryCalculatorPropertyValue(SalaryCalculator calculator, string message, string propertyName)
         {
             var pass = true;
             do
             {
                 try
                 {
-                    Console.Write("Entre hora de inicio del trabajo (notación 24h): ");
-                    calculator.StartTime = Console.ReadLine();
-                }
-                catch (Exception ex)
-                {
-                    Console.Write("Exception: ");
-                    Console.Write(ex.Message + "\n");
-                    pass = false;
-                }
-
-            } while (!pass);
-            do
-            {
-                pass = true;
-                try
-                {
-                    Console.Write("Entre hora de salida del trabajo (notación 24h): ");
-                    calculator.EndTime = Console.ReadLine();
-                }
-                catch (Exception ex)
-                {
-                    Console.Write("Exception: ");
-                    Console.Write(ex.Message + "\n");
-                    pass = false;
-                }
-
-            } while (!pass);
-            do
-            {
-                pass = true;
-                try
-                {
-                    Console.Write("Entre tasa horaria del trabajo ($/h): ");
-                    calculator.HourRate = Console.ReadLine();
-                }
-                catch (Exception ex)
-                {
-                    Console.Write("Exception: ");
-                    Console.Write(ex.Message + "\n");
-                    pass = false;
-                }
-
-            } while (!pass);
-            do
-            {
-                pass = true;
-                try
-                {
-                    Console.Write("Entre factor para horas extras del trabajo (n): ");
-                    calculator.ExtraHourFactor = Console.ReadLine();
+                    Console.Write(message);
+                    var value = Console.ReadLine();
+                    var type = calculator.GetType();
+                    var propInfo = type.GetProperty(propertyName);
+                    if (propInfo != null)
+                    {
+                        propInfo.SetValue(calculator, value);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -124,5 +91,6 @@ namespace testsVT
 
             } while (!pass);
         }
+
     }
 }
