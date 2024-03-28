@@ -86,7 +86,7 @@ namespace testsVT
                 catch (Exception ex)
                 {
                     Console.Write("Exception: ");
-                    Console.Write(ex.Message + "\n");
+                    Console.Write(ex.InnerException.Message + "\n");
                     pass = false;
                 }
 
