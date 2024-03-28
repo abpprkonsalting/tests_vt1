@@ -32,6 +32,12 @@ namespace testsVT
                     case "2":
                         var salaryCalculator = new SalaryCalculator();
                         inputSalaryCalculatorData(salaryCalculator);
+                        Console.Write("El salario total del día es: ");
+                        Console.Write("$" + salaryCalculator.calculateSalary() + "\n");
+                        Console.Write("Horas normales trabajadas: ");
+                        Console.Write(salaryCalculator.worked + "\n");
+                        Console.Write("Horas extras trabajadas: ");
+                        Console.Write(salaryCalculator.extra);
                         break;
                     default:
                         throw new Exception("Valor de entrada incorrecto");
