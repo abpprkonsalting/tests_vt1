@@ -51,7 +51,7 @@ namespace testsVT
                 
             }
             finally{
-                Console.Write("Oprima enter para terminar.\n");
+                Console.Write("\nOprima enter para terminar.\n");
                 Console.ReadLine();
             }
 
