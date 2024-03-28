@@ -30,6 +30,8 @@ namespace testsVT
                         Console.Write("La frase ordenada es: " + orderer.sortAlphabetically() + "\n");
                         break;
                     case "2":
+                        var salaryCalculator = new SalaryCalculator();
+                        inputSalaryCalculatorData(salaryCalculator);
                         break;
                     default:
                         throw new Exception("Valor de entrada incorrecto");
@@ -47,6 +49,74 @@ namespace testsVT
                 Console.ReadLine();
             }
 
+        }
+
+        static void inputSalaryCalculatorData(SalaryCalculator calculator)
+        {
+            var pass = true;
+            do
+            {
+                try
+                {
+                    Console.Write("Entre hora de inicio del trabajo (notación 24h): ");
+                    calculator.StartTime = Console.ReadLine();
+                }
+                catch (Exception ex)
+                {
+                    Console.Write("Exception: ");
+                    Console.Write(ex.Message + "\n");
+                    pass = false;
+                }
+
+            } while (!pass);
+            do
+            {
+                pass = true;
+                try
+                {
+                    Console.Write("Entre hora de salida del trabajo (notación 24h): ");
+                    calculator.EndTime = Console.ReadLine();
+                }
+                catch (Exception ex)
+                {
+                    Console.Write("Exception: ");
+                    Console.Write(ex.Message + "\n");
+                    pass = false;
+                }
+
+            } while (!pass);
+            do
+            {
+                pass = true;
+                try
+                {
+                    Console.Write("Entre tasa horaria del trabajo ($/h): ");
+                    calculator.HourRate = Console.ReadLine();
+                }
+                catch (Exception ex)
+                {
+                    Console.Write("Exception: ");
+                    Console.Write(ex.Message + "\n");
+                    pass = false;
+                }
+
+            } while (!pass);
+            do
+            {
+                pass = true;
+                try
+                {
+                    Console.Write("Entre factor para horas extras del trabajo (n): ");
+                    calculator.ExtraHourFactor = Console.ReadLine();
+                }
+                catch (Exception ex)
+                {
+                    Console.Write("Exception: ");
+                    Console.Write(ex.Message + "\n");
+                    pass = false;
+                }
+
+            } while (!pass);
         }
     }
 }
